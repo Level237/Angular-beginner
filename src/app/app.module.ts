@@ -16,6 +16,7 @@ import { SingleAppareilComponent } from './single-appareil/single-appareil.compo
 const routes:Routes=[
   {path:'appareils',component:AppareilViewComponent},
   {path:'auth',component:AuthComponent},
+  {path:'appareil/:id',component:SingleAppareilComponent},
   {path:'',component:AppareilViewComponent}
 ];
 @NgModule({
