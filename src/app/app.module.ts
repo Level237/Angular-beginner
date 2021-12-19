@@ -9,16 +9,17 @@ import { AppareilComponent } from './appareil/appareil.component';
 import { AppareilService } from './services/appareil.service';
 import { AuthComponent } from './auth/auth.component';
 import { AppareilViewComponent } from './appareil-view/appareil-view.component';
-import {RouterModule,Routes} from '@angular/router';
+import { RouterModule, Routes, CanActivate } from '@angular/router';
 import { AuthService } from './services/auth.service';
 import { SingleAppareilComponent } from './single-appareil/single-appareil.component';
 import { NotFoundComponent } from './not-found/not-found.component';
+import { AuthGuard } from './services/auth-guard.service';
 
 const routes:Routes=[
-  {path:'appareils',component:AppareilViewComponent},
+  {path:'appareils',canActivate:[AuthGuard], component:AppareilViewComponent},
   {path:'auth',component:AuthComponent},
-  {path:'appareils/:id',component:SingleAppareilComponent},
-  {path:'',component:AppareilViewComponent},
+  {path:'appareils/:id',canActivate:[AuthGuard],component:SingleAppareilComponent},
+  {path:'',canActivate:[AuthGuard],component:AppareilViewComponent},
   {path:'notFound',component:NotFoundComponent},
   {path:'**',redirectTo:'/notFound'}
 ];
@@ -40,7 +41,8 @@ const routes:Routes=[
   ],
   providers: [
     AppareilService,
-    AuthService
+    AuthService,
+    AuthGuard
   ],
   bootstrap: [AppComponent]
 })
