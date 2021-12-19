@@ -4,7 +4,9 @@
       <p>Mis a jour : {{lastupdate | date :'yMMMMEEEEd' | uppercase}}</p>
       <app-appareil *ngFor="let appareil of appareils; let i=index"
       [IndexOfAppareil]="i"
-      [AppareilName]="appareil.name" [AppareilStatus]="appareil.status"></app-appareil>
+      [AppareilName]="appareil.name" 
+      [AppareilStatus]="appareil.status"
+      [id]="appareil.id"></app-appareil>
     </ul>
     <button class="btn btn-success" [disabled]="!isAuth" (click)="OnAllumer()">Tout allumer</button>
     <button class="btn btn-danger" (click)="OnEteindre()">Tout Eteindre</button>
