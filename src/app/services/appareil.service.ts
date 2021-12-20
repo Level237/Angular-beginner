@@ -54,4 +54,16 @@ export class AppareilService{
     this.appareils[index].status='eteint';
     this.emitAppareilSubject();
   }
+  AddAppareil(name:string,status:string){
+    const AppareilObject={
+      id:0,
+      name:'',
+      status:''
+    };
+    AppareilObject.name=name;
+    AppareilObject.status=status;
+    AppareilObject.id=this.appareils[(this.appareils.length -1)].id + 1;
+    this.appareils.push(AppareilObject);
+    this.emitAppareilSubject();
+  }
 }
